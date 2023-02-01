@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Jobs\TaskLogic2Job;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

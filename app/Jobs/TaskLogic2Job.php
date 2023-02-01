@@ -30,7 +30,7 @@ class TaskLogic2Job implements ShouldQueue
      */
     public function handle()
     {
-        $this->info("Perulangan mulai");
+        echo "Perulangan mulai";
         $max = 10;
         for($i=0;$i <= $max ;$i++){
             if($i == $max){

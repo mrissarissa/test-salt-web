@@ -22,9 +22,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->call(function () {
-            Log::info('Cronjob berhasil dijalankan');
-        })->everyTwoMinutes();
+          $schedule->call('\App\Http\Controllers\CronController@handleJob')->everyMinute();
+
     }
 
     /**
