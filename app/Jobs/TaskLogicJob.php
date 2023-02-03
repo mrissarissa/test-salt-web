@@ -32,7 +32,7 @@ class TaskLogic2Job implements ShouldQueue
      */
     public function handle()
     {
-        $max = 5;
+        $max = 1000;
         $faker = Factory::create();
         for($i = 0; i < $max; $i++){
             $data = [
