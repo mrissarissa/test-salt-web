@@ -3,20 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Jobs\TaskLogic2Job;
+use App\Jobs\TaskLogicJob;
 class CronController extends Controller
 {
-    public function handleJob(Request $request)
+    public function handleJob()
     {
-        echo "Perulangan mulai";
-        $max = 10;
-        for($i=0;$i <= $max ;$i++){
-            TaskLogic2Job::dispatch($i)->onQueue('task_scheduler');
-
-            if($i == $max){
-                echo "Perulangan selesai";
-            }
-        }
-
+        $job =  new TaskLogicJob();
+        $this->dispatch($job)->onQueue('task_scheduler');
     }
 }

@@ -16,6 +16,6 @@ use App\Jobs\TaskLogic2Job;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('sending-queue', [QueueController::class,'handleJob']);
+Route::get('/sending-queue', [App\Http\Controllers\CronController::class,'handleJob']);
 Route::get('/user', [App\Http\Controllers\UserController::class, 'index']);
 Route::get('/user/{id}', [App\Http\Controllers\UserController::class, 'find']);

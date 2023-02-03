@@ -8,7 +8,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
+use App\Models\User;
 class TaskLogic2Job implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -30,12 +32,16 @@ class TaskLogic2Job implements ShouldQueue
      */
     public function handle()
     {
-        echo "Perulangan mulai";
-        $max = 10;
-        for($i=0;$i <= $max ;$i++){
-            if($i == $max){
-                echo "Perulangan selesai";
-            }
+        $max = 5;
+        $faker = Factory::create();
+        for($i = 0; i < $max; $i++){
+            $data = [
+                'name' => $faker->name,
+                'email'=> $faker->unique->email(),
+                'password'=> md5('123')
+            ];
+            User::create($data);
         }
+        Log::info("Task Selesai");
     }
 }
